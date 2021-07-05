@@ -4,7 +4,7 @@ This repository includes all the code to reproduce the results of the paper *A C
 
 * Experiments: This folder contains the actual experiments
 	* **Synthetic benchmark**: Train InceptionV3, ResNet50 and ResNet101 over synthetic data using [the script provided by Horovod](https://github.com/horovod/horovod/blob/master/examples/tensorflow2/tensorflow2_synthetic_benchmark.py). The steps to run this experiment are the following:
-		1. Install udocker in the HPC cluster (see [installation manual](https://github.com/indigo-dc/udocker/blob/master/doc/installation_manual.md))
+		1. Install udocker in the HPC cluster (see [installation manual](https://indigo-dc.gitbook.io/udocker/installation_manual))
 		2. Run [setup-container.sh](https://github.com/jgonzalezab/workflow-DL-HPC/blob/main/experiments/synthetic-benchmark/setup-container.sh) for creating the container (taking into account the OpenMPI version available in the cluster)
 		3. Run [control.sh](https://github.com/jgonzalezab/workflow-DL-HPC/blob/main/experiments/synthetic-benchmark/control.sh) specifing the jobs to run through its parameters
 
