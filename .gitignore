@@ -1,0 +1,6 @@
+*.swp
+*.rda
+*.h5
+*.Rhistory
+*.nc4
+__pycache__
