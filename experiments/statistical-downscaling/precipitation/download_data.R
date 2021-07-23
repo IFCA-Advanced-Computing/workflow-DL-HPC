@@ -5,6 +5,7 @@ library(loadeR)
 library(transformeR)
 library(magrittr)
 
+# Enter account info
 loginUDG('***', '***')
 
 # Location and temporal selection

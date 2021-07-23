@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Load modules (Altamira specific)
+# Load modules (specific of the CSIC infrastructure)
 source /etc/profile.d/modules.sh
 module purge
-module load OPENMPI/4.0.1
+module load OPENMPI/4.1.0
 
 # Models to run and its respective batch sizes
 MODELS_TO_RUN=('InceptionV3' 'ResNet50' 'ResNet101')
@@ -17,7 +17,9 @@ MPI_PARAMS="-np $GPUS \
 -mca pml ob1 -mca btl ^openib"
 
 # Add GPUs libraries to the container
-$UDOCKER setup --nvidia --force $CONTAINER
+udocker setup --nvidia --force $CONTAINER
+
+nvidia-modprobe -u -c=0
 
 # Run the different benchmarks as jobs
 for j in "${!MODELS_TO_RUN[@]}"
@@ -25,9 +27,9 @@ for j in "${!MODELS_TO_RUN[@]}"
     echo '****************************************************************************************************'
     echo "Training model" ${MODELS_TO_RUN[$j]} "with bs" ${BATCH_SIZES[$j]}
     mpirun $MPI_PARAMS \
-    $UDOCKER run --hostenv --hostauth --user=$USER \
+    udocker run --hostenv --hostauth --user=$USER \
     -v $DIR_TO_MOUNT/:/home/ $CONTAINER \
     python /home/tensorflow2_synthetic_benchmark.py --model ${MODELS_TO_RUN[$j]} --batch-size ${BATCH_SIZES[$j]}
     wait
   done
- 
+

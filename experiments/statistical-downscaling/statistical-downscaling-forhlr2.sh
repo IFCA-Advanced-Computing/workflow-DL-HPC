@@ -1,11 +1,10 @@
 #!/bin/bash
 
 # Project directory
-export SD_DIRECTORY="$HOME/experiments/statistical-downscaling/downscaling-precipitation"
+export SD_DIRECTORY="$HOME/experiments/statistical-downscaling"
 
-# udocker config
-export UDOCKER="$HOME/udocker" 
-export CONTAINER="multiGPU"
+# udocker container name
+export CONTAINER="multigpu-downscaling"
 
 # Job config
 export JOB_NAME="multiGPU-SD"
@@ -20,7 +19,7 @@ for i in "${NTASKS[@]}"
     echo '****************************************************************************************************'
     echo 'Training model on' $i 'GPUs'
     
-    # Specific Slurm directives for CSIC deep learning computer infrastructure
+    # Specific Slurm directives for ForHLR2 supercomputer
     SLURM_PARAMS="-p visu --job-name=${JOB_NAME}_GPU${i} --nodes=${NUM_NODES} --ntasks-per-node=${i} --time=24:00:00 --output=${JOB_NAME}_GPU${i}.out --error=${JOB_NAME}_GPU${i}.err"
 
     # Job launching

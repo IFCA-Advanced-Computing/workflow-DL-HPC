@@ -23,7 +23,7 @@ import horovod.tensorflow as hvd
 from tensorflow.keras import applications
 
 # Path to save the results
-DATA_PATH = '/home/data/'
+RESULTS_PATH = '/home/results/'
 
 # Benchmark settings
 parser = argparse.ArgumentParser(description='TensorFlow Synthetic Benchmark',
@@ -144,6 +144,13 @@ with tf.device(device):
                 'image_sec_mean': img_sec_mean,
                 'image_sec_conf': img_sec_conf}
 
-with open(DATA_PATH + 'history_' + args.model + '_GPU' + str(hvd.size()) + '.pkl', 'wb') as f:
+# Save the results
+
+i = 1 
+while os.path.isfile(RESULTS_PATH + 'history_' + args.model + '_GPU' + str(hvd.size()) \
+		     + '_' + str(i) + '.pkl'):
+    i += 1
+
+with open(RESULTS_PATH + 'history_' + args.model + '_GPU' + str(hvd.size()) + '_' + str(i) + '.pkl', 'wb') as f:
     pickle.dump(timeData, f, pickle.HIGHEST_PROTOCOL)
 

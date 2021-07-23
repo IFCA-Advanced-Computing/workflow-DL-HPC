@@ -1,4 +1,4 @@
-# Base image setting
+# Base image setting (2.5.0-gpu)
 ARG image=tensorflow/tensorflow
 ARG tag=2.2.0-gpu
 

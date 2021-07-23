@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# udocker config (if running through udocker)
-export UDOCKER="$HOME/udocker" 
+# Name of the container to execute (if running with udocker)
 export CONTAINER="multigpu-base"
 
 # conda env name (if running in a native environment)
@@ -9,13 +8,13 @@ export ENV_NAME="multiGPU"
 
 # Job config
 export JOB_NAME="synBen"
-export JOB2RUN="./job_udocker.sh" # Select job script based on type of execution (conda vs native)
-export DIR_TO_MOUNT="$HOME/experiments/synthetic-benchmark"
+export JOB2RUN="./job_udocker.sh" # Select job script based on type of execution (udocker vs native)
+export DIR_TO_MOUNT="$HOME/experiments/synthetic-benchmark/benchmark"
 
 # GPUs config
 export NUM_GPUS=('1' '2' '3' '4' '5' '6')
 
-# Launch jobs per number of GPUs
+# Launch jobs per number of GPUs configs
 for i in "${NUM_GPUS[@]}"
   do
     echo "Num GPUs:" $i
@@ -34,3 +33,4 @@ for i in "${NUM_GPUS[@]}"
     sbatch $SLURM_PARAMS $JOB2RUN --wait
     wait
   done
+

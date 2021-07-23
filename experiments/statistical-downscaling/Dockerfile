@@ -17,7 +17,8 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD5
     add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/' && \
     apt-get update -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    	r-base=\* && \
+    	r-base=\* \
+        r-base-dev=\* && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -28,13 +29,13 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD5
     add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/' && \
     apt-get update -y && \
     apt-get install -y --no-install-recommends \
-         libgit2-dev=\* \
+	 libgit2-dev=\* \
          libcurl4-gnutls-dev=\* \
          libicu-dev=\* \
          libbz2-dev=\* \
          libnetcdf-dev=\* \
          libnetcdff-dev=\* \
-         libssl-dev=\* \
+	 libssl-dev=\* \
          libssh2-1-dev=\* \
          libxml2-dev=\* \
          libgit2-dev=\* && \

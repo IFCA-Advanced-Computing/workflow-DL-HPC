@@ -2,7 +2,7 @@
 
 source /etc/profile.d/modules.sh
 module purge
-module load OPENMPI/4.0.1
+module load OPENMPI/4.1.0
 
 MODELS_TO_RUN=('InceptionV3' 'ResNet50' 'ResNet101')
 BATCH_SIZES=(256 256 128)
