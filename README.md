@@ -26,7 +26,7 @@ This experiment trains InceptionV3, ResNet50 and ResNet101 models on synthetic d
 
 #### Container Based environment
 
-This environment is based on the proposed workflow. We will run the distributed training of the models via udocker containerization. What we need first is an image with all the software needed to run our experiments. A [Dockerfile](https://github.com/jgonzalezab/workflow-DL-HPC/blob/main/experiments/synthetic-benchmark/Dockerfile) with these requirements have been developed using Docker. The corresponding image has been uploaded to [DockerHub](https://hub.docker.com/layers/gonzabad/multigpu-horovod/base/images/sha256-526c9c3658d6d7937aee2d9084ed75c7e7ae92a49090505f7c386c415302b503?context=explore) in order to make it accessible through internet. To create a container of this image in the cluster we need to execute the following code:
+This environment is based on the proposed workflow. We will run the distributed training of the models via udocker containerization. What we need first is an image with all the software needed to run our experiments. A [Dockerfile](https://github.com/jgonzalezab/workflow-DL-HPC/blob/main/experiments/synthetic-benchmark/Dockerfile) with these requirements have been developed using Docker. The corresponding image has been uploaded to [DockerHub](https://hub.docker.com/layers/gonzabad/multigpu-horovod/base/images/sha256-fbf17992f9130f4d8cc410ca43ee7235200c53b3e977247b71e1b3840fd23ab2?context=explore) in order to make it accessible through internet. To create a container of this image in the cluster we need to execute the following code:
 
  ```
 # Pull image fom DockerHub
@@ -60,7 +60,7 @@ the job to run (in this case we will run the one corresponding to udocker):
 export JOB2RUN="./job_udocker.sh" # Select job script based on type of execution (udocker vs native)
 ```
 
-which host directory mount into the container (this directory must include the [benchmark script](https://github.com/jgonzalezab/workflow-DL-HPC/blob/main/experiments/synthetic-benchmark/tensorflow2_synthetic_benchmark.py)):
+which host directory mount into the container (this directory must include the [benchmark script](https://github.com/jgonzalezab/workflow-DL-HPC/blob/main/experiments/synthetic-benchmark/benchmark/tensorflow2_synthetic_benchmark.py)):
 
 ```
 export DIR_TO_MOUNT="$HOME/experiments/synthetic-benchmark"
@@ -100,7 +100,7 @@ This experiment performs Statistical Downscaling of precipitation over the regio
 
 #### Container set-up
 
-The [Dockerfile](https://github.com/jgonzalezab/workflow-DL-HPC/blob/main/experiments/statistical-downscaling/Dockerfile) developed in this experiment is the result of adding the specific software needed to run the Statistical Downscaling to the Dockerfile of the TensorFlow benchmark. The image can be accessed through [DockerHub](https://hub.docker.com/layers/gonzabad/multigpu-horovod/downscaling/images/sha256-28c0b22ac542d70ecf5a66c3685b95eb79f84d31f550431c42c94a2a782dc7b9?context=explore). The container can be configured in the same way as in the previous experiment:
+The [Dockerfile](https://github.com/jgonzalezab/workflow-DL-HPC/blob/main/experiments/statistical-downscaling/Dockerfile) developed in this experiment is the result of adding the specific software needed to run the Statistical Downscaling to the Dockerfile of the TensorFlow benchmark. The image can be accessed through [DockerHub](https://hub.docker.com/layers/gonzabad/multigpu-horovod/downscaling/images/sha256-dbdcb37e8936b7af8b20bb29aa4e1f6d99beca7e99265ab7510610177f84a8a8?context=explore). The container can be configured in the same way as in the previous experiment:
 
 ```
 # Pull image fom DockerHub
