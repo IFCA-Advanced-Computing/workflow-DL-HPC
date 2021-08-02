@@ -26,7 +26,7 @@ This experiment trains InceptionV3, ResNet50 and ResNet101 models on synthetic d
 
 #### Container Based environment
 
-This environment is based on the proposed workflow. We will run the distributed training of the models via udocker containerization. What we need first is an image with all the software needed to run our experiments. A [Dockerfile](https://github.com/jgonzalezab/workflow-DL-HPC/blob/main/experiments/synthetic-benchmark/Dockerfile) with these requirements have been developed using Docker. The corresponding image has been uploaded to [DockerHub](https://hub.docker.com/layers/gonzabad/multigpu-horovod/base/images/sha256-fbf17992f9130f4d8cc410ca43ee7235200c53b3e977247b71e1b3840fd23ab2?context=explore) in order to make it accessible through internet. To create a container of this image in the cluster we need to execute the following code:
+This environment is based on the proposed workflow. We will run the distributed training of the models via udocker containerization. What we need first is an image with all the software needed to run our experiments. A [Dockerfile](https://github.com/jgonzalezab/workflow-DL-HPC/blob/main/experiments/synthetic-benchmark/Dockerfile) with these requirements have been developed using Docker. The corresponding image has been uploaded to [DockerHub](https://hub.docker.com/layers/gonzabad/multigpu-horovod/base/images/sha256-68bfe1ab5d0b36a080e7651066acaafacf5b8901ab5c653eb4b0cc7adec5753f?context=explore) in order to make it accessible through internet. To create a container of this image in the cluster we need to execute the following code:
 
  ```
 # Pull image fom DockerHub
@@ -76,7 +76,7 @@ Differents HPC cluster could have different Slurm directives, so please take thi
 
 This script launches the [job_udocker.sh](https://github.com/jgonzalezab/workflow-DL-HPC/blob/main/experiments/synthetic-benchmark/job_udocker.sh) script which finally sets up the MPI parameters and run the jobs via udocker.
 
-Once the [control.sh](https://github.com/jgonzalezab/workflow-DL-HPC/blob/main/experiments/synthetic-benchmark/control.sh) is launched via some workload manager (Slurm in this case) the distributed training of the deep learning models will be executed. When it finish Slurm will return a log file with the images/sec processed for each model on each GPU configuration.
+Once the [control.sh](https://github.com/jgonzalezab/workflow-DL-HPC/blob/main/experiments/synthetic-benchmark/control.sh) is launched via some workload manager (Slurm in this case) the distributed training of the deep learning models will be executed. When it finish Slurm will return a log file with the images/sec processed for each model on each GPU configuration, besides a .pkl file containing these results. This last file will be saved in the [results](https://github.com/jgonzalezab/workflow-DL-HPC/tree/main/experiments/synthetic-benchmark/benchmark/results) folder. 
 
 #### Native environment
 
@@ -100,7 +100,7 @@ This experiment performs Statistical Downscaling of precipitation over the regio
 
 #### Container set-up
 
-The [Dockerfile](https://github.com/jgonzalezab/workflow-DL-HPC/blob/main/experiments/statistical-downscaling/Dockerfile) developed in this experiment is the result of adding the specific software needed to run the Statistical Downscaling to the Dockerfile of the TensorFlow benchmark. The image can be accessed through [DockerHub](https://hub.docker.com/layers/gonzabad/multigpu-horovod/downscaling/images/sha256-dbdcb37e8936b7af8b20bb29aa4e1f6d99beca7e99265ab7510610177f84a8a8?context=explore). The container can be configured in the same way as in the previous experiment:
+The [Dockerfile](https://github.com/jgonzalezab/workflow-DL-HPC/blob/main/experiments/statistical-downscaling/Dockerfile) developed in this experiment is the result of adding the specific software needed to run the Statistical Downscaling to the Dockerfile of the TensorFlow benchmark. The image can be accessed through [DockerHub](https://hub.docker.com/layers/gonzabad/multigpu-horovod/downscaling/images/sha256-d695141efc6677e0ac38e6702c5a0c580ed8bc7613a6e5063e609c3e83a738b1?context=explore). The container can be configured in the same way as in the previous experiment:
 
 ```
 # Pull image fom DockerHub

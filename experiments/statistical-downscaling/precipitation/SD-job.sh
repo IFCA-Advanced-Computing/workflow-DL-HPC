@@ -6,12 +6,12 @@ MPI_PARAMS="-bind-to none -map-by slot \
 -mca pmix_server_usock_connections 1 \
 -mca pml ob1 -mca btl ^openib"
 
-$UDOCKER setup --nvidia --force $CONTAINER
+udocker setup --nvidia --force $CONTAINER
 
 nvidia-modprobe -u -c=0
 nvidia-smi
 
 mpirun $MPI_PARAMS \
-$UDOCKER run --hostenv --hostauth --user=$USER \
-         --volume=$SD_DIRECTORY:/examples/ $CONTAINER \
-	 python train_model.py
+udocker run --hostenv --hostauth --user=$USER \
+        --volume=$SD_DIRECTORY:/examples/ $CONTAINER \
+	python /examples/precipitation/train_model.py

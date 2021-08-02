@@ -145,7 +145,6 @@ with tf.device(device):
                 'image_sec_conf': img_sec_conf}
 
 # Save the results
-
 i = 1 
 while os.path.isfile(RESULTS_PATH + 'history_' + args.model + '_GPU' + str(hvd.size()) \
 		     + '_' + str(i) + '.pkl'):

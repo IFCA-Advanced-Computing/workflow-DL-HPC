@@ -1,4 +1,5 @@
 *.swp
+*.pkl
 *.rda
 *.h5
 *.Rhistory

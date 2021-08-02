@@ -18,7 +18,6 @@ MPI_PARAMS="-np $GPUS \
 
 # Add GPUs libraries to the container
 udocker setup --nvidia --force $CONTAINER
-
 nvidia-modprobe -u -c=0
 
 # Run the different benchmarks as jobs
