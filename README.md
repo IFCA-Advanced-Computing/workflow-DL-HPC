@@ -126,7 +126,7 @@ In order to train the model we need to download and preprocess the required data
 Rscript download_data.R
 ```
 
-It will save the download data in the `/precipitation/data/` folder. Now the data can be preprocessed wit the [preprocess.R script](https://github.com/jgonzalezab/workflow-DL-HPC/blob/main/experiments/statistical-downscaling/precipitation/preprocess.R):
+It will save the download data in the `/precipitation/data/` folder. Both datasets ([ERA-Interim](http://dx.doi.org/10.21957/vf291hehd7) and [EWEMBI](http://doi.org/10.5880/pik.2019.004)) can also be downloaded from their original sources. Now the data can be preprocessed wit the [preprocess.R script](https://github.com/jgonzalezab/workflow-DL-HPC/blob/main/experiments/statistical-downscaling/precipitation/preprocess.R):
 
 ```
 Rscript preprocess.R
